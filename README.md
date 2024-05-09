@@ -1,6 +1,6 @@
 Working Title (Subject to Change): LemOn
 
-Name: [redacted]
+Name: Zechariah Frierson
 
 Purpose: Convenient application to sort and search music
 
