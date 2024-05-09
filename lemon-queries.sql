@@ -49,9 +49,9 @@ CREATE PROCEDURE GetSongGenre(IN song_id INT UNSIGNED, OUT song_genre VARCHAR(50
     END;
     //
 
-CREATE PROCEDURE FindArtistGenre(IN artist_id INT UNSIGNED, OUT song_genre VARCHAR(50))
+CREATE PROCEDURE FindArtistGenre(IN artist_id INT UNSIGNED, OUT artist_genre VARCHAR(50))
     BEGIN
-        SELECT Song.Genre INTO song_genre
+        SELECT Song.Genre INTO artist_genre
         FROM Song
         JOIN Song_Artist ON Song.SongID = Song_Artist.SongID
         WHERE Song_Artist.ArtistID = artist_id
@@ -116,51 +116,3 @@ CREATE PROCEDURE FindLatestCommentsByGenre(IN genre_name VARCHAR(50), OUT commen
     END;
     //
 DELIMITER ;
-
--- =================================Queries===================================
--- TESTING DELETE TRIGGER
--- deleting user with public playlist
-DELETE FROM User WHERE UserID = 1;
--- deleting user with private playlist
-DELETE FROM User WHERE UserID = 3;
--- selecting playlists to check if they were deleted
-SELECT * FROM Playlist WHERE PlaylistID = 1;
-SELECT * FROM Playlist WHERE PlaylistID = 3;
--- deleting playlists to reset table
-DELETE FROM Playlist WHERE PlaylistID = 1;
-DELETE FROM Playlist WHERE PlaylistID = 3;
-
--- TESTING STORED PROCEDURES
--- testing GetPlaylistSongs
-CALL GetPlaylistSongs(5, @song_title);
-SELECT @song_title;
--- testing GetSongArtist
-CALL GetSongArtist(1, @artist_name);
-SELECT @artist_name;
--- testing GetArtistSongs
-CALL GetArtistSongs(1, @song_title);
-SELECT @song_title;
--- testing GetSongGenre
-CALL GetSongGenre(1, @song_genre);
-SELECT @song_genre;
--- testing FindArtistGenre
-CALL FindArtistGenre(1, @song_genre);
-SELECT @song_genre;
--- testing GetSongDurationMinutes
-CALL GetSongDurationMinutes(1, @song_duration_minutes);
-SELECT @song_duration_minutes;
--- testing GetSongViews
-CALL GetSongViews(1, @song_views);
-SELECT @song_views;
--- testing GetArtistViews
-CALL GetArtistViews(1, @artist_total_views);
-SELECT @artist_total_views;
--- testing GetTopArtist
-CALL GetTopArtist(@artist_name);
-SELECT @artist_name;
--- testing GetTopArtistByGenre
-CALL GetTopArtistByGenre('Pop', @artist_name);
-SELECT @artist_name;
--- testing FindLatestCommentsByGenre
-CALL FindLatestCommentsByGenre('Pop', @comment_id);
-SELECT @comment_id;

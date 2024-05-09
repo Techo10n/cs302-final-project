@@ -418,13 +418,3 @@ INSERT INTO Comment VALUES
     (48, 48, 15, 'New comment 15', '2024-03-29 00:00:00', 12, 7, TRUE),
     (49, 49, 15, 'New comment 16', '2024-03-30 01:00:00', 15, 1, TRUE),
     (50, 50, 15, 'New comment 17', '2024-03-31 02:00:00', 8, 0, FALSE);
-
-
--- inserts for testing
-INSERT INTO User VALUES
-	(1, 'user123', 'user123@example.com', 'password123', '1990-05-15', 'USA'),
-    (3, 'artfanatic', 'artfanatic@yahoo.com', 'art456', '1995-12-10', 'Canada');
-    
-INSERT INTO Playlist VALUES
-    (1, 'Favorites', 1, 'Collection of top...', '2023-07-01', 5, 1200, TRUE),
-    (3, 'Study Sessions', 3, 'Music for focusing...', '2024-03-15', 10, 2000, FALSE);
